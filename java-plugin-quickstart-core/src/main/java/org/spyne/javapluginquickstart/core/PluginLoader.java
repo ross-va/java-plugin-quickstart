@@ -66,10 +66,10 @@ public class PluginLoader {
 
   private URLClassLoader createPluginClassLoader(File dir) {
     final URL[] urls = Arrays.stream(Optional.of(dir.listFiles()).orElse(new File[]{}))
-        .sorted()
-        .map(File::toURI)
-        .map(this::toUrl)
-        .toArray(URL[]::new);
+            .sorted()
+            .map(File::toURI)
+            .map(this::toUrl)
+            .toArray(URL[]::new);
 
     return new PluginClassLoader(urls, getClass().getClassLoader());
   }

@@ -15,6 +15,7 @@
 
     <!--  Build plugins -->
     <module>java-plugin-quickstart-plugin-foo</module>
+    <module>BarPlugin</module>
 
     <!--  Build the distribution -->
     <module>java-plugin-quickstart-distribution</module>

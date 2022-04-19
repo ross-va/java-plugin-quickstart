@@ -54,7 +54,19 @@
       <outputDirectory>plugins/foo/</outputDirectory>
     </fileSet>
 
+    <fileSet>
+      <directory>
+        ${root}/BarPlugin/target/BarPlugin-${project.version}-dist
+      </directory>
+      <includes>
+        <include>
+          BarPlugin-${project.version}.jar
+        </include>
+      </includes>
+      <outputDirectory>plugins/bar/</outputDirectory>
+    </fileSet>
   </fileSets>
+
   <formats>
     <format>dir</format>
     <format>tar.gz</format>
