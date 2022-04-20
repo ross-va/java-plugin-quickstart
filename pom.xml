@@ -18,7 +18,7 @@
     <module>BarPlugin</module>
 
     <!--  Build the distribution -->
-    <module>java-plugin-quickstart-distribution</module>
+    <module>distribution</module>
   </modules>
 
   <dependencyManagement>
