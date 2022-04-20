@@ -1,16 +1,16 @@
 package org.spyne.javapluginquickstart.barplugin;
 
-import org.spyne.javapluginquickstart.spi.foo.Foo;
-import org.spyne.javapluginquickstart.spi.foo.FooFactory;
+import org.spyne.javapluginquickstart.spi.task.Task;
+import org.spyne.javapluginquickstart.spi.task.PluginFactory;
 
-public class BarFactoryImpl implements FooFactory {
+public class BarFactoryImpl implements PluginFactory {
     @Override
     public String name() {
         return "bar";
     }
 
     @Override
-    public Foo build() {
+    public Task build() {
         return new BarImpl();
     }
 }

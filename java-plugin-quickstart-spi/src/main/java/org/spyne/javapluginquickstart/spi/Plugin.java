@@ -2,11 +2,11 @@ package org.spyne.javapluginquickstart.spi;
 
 import java.util.Collections;
 import java.util.List;
-import org.spyne.javapluginquickstart.spi.foo.FooFactory;
+import org.spyne.javapluginquickstart.spi.task.PluginFactory;
 
 public interface Plugin {
 
-  default List<FooFactory> getFooFactories() {
+  default List<PluginFactory> getPluginFactories() {
     return Collections.emptyList();
   }
 }

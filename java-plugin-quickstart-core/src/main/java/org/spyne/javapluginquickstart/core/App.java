@@ -1,11 +1,9 @@
 package org.spyne.javapluginquickstart.core;
 
 import java.io.File;
-import java.sql.SQLOutput;
-import java.util.SortedMap;
 
-import org.spyne.javapluginquickstart.spi.foo.Foo;
-import org.spyne.javapluginquickstart.spi.foo.FooFactory;
+import org.spyne.javapluginquickstart.spi.task.Task;
+import org.spyne.javapluginquickstart.spi.task.PluginFactory;
 
 /**
  * Launcher for javapluginquickstart
@@ -31,8 +29,8 @@ public class App {
     // get plugin based on class/event type
 
 
-    FooFactory f = pluginLoader.getFooFactory("foo");
-    FooFactory b = pluginLoader.getFooFactory("bar");
+    PluginFactory f = pluginLoader.getFooFactory("foo");
+    PluginFactory b = pluginLoader.getFooFactory("bar");
     System.out.println(b);
 
     if (f == null) {
@@ -41,11 +39,11 @@ public class App {
     }
 
     System.out.println("This is running from the plugin");
-    final Foo foo = f.build();
-    foo.doFoo();
+    final Task foo = f.build();
+    foo.doTask();
 
     System.out.println("Running from bar plugin");
-    final Foo bar = b.build();
-    bar.doFoo();
+    final Task bar = b.build();
+    bar.doTask();
   }
 }

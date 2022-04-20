@@ -14,11 +14,11 @@ import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.spyne.javapluginquickstart.spi.Plugin;
-import org.spyne.javapluginquickstart.spi.foo.FooFactory;
+import org.spyne.javapluginquickstart.spi.task.PluginFactory;
 
 public class PluginLoader {
 
-  private final Map<String, FooFactory> fooFactoryMap = new HashMap<>();
+  private final Map<String, PluginFactory> pluginFactoryMap = new HashMap<>();
   private final File pluginsDir;
   private final AtomicBoolean loading = new AtomicBoolean();
 
@@ -59,8 +59,8 @@ public class PluginLoader {
 
   private void installPlugin(final Plugin plugin) {
     System.out.println("Installing plugin: " + plugin.getClass().getName());
-    for (FooFactory f : plugin.getFooFactories()) {
-      fooFactoryMap.put(f.name(), f);
+    for (PluginFactory f : plugin.getPluginFactories()) {
+      pluginFactoryMap.put(f.name(), f);
     }
   }
 
@@ -82,7 +82,7 @@ public class PluginLoader {
     }
   }
 
-  public FooFactory getFooFactory(String name) {
-    return fooFactoryMap.get(name);
+  public PluginFactory getFooFactory(String name) {
+    return pluginFactoryMap.get(name);
   }
 }
