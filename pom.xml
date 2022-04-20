@@ -10,7 +10,7 @@
   <version>1.0-SNAPSHOT</version>
 
   <modules>
-    <module>java-plugin-quickstart-spi</module>
+    <module>spi</module>
     <module>core</module>
 
     <!--  Build plugins -->
@@ -25,7 +25,7 @@
     <dependencies>
       <dependency>
         <groupId>org.spyne.javapluginquickstart</groupId>
-        <artifactId>java-plugin-quickstart-spi</artifactId>
+        <artifactId>spi</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

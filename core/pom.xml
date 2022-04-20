@@ -14,7 +14,7 @@
 
   <dependencies>
     <dependency>
-      <artifactId>java-plugin-quickstart-spi</artifactId>
+      <artifactId>spi</artifactId>
       <groupId>org.spyne.javapluginquickstart</groupId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
