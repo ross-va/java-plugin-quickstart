@@ -49,7 +49,7 @@
     <!-- Copy all plugins -->
     <fileSet>
       <directory>
-        ${root}/java-plugin-quickstart-plugin-foo/target/java-plugin-quickstart-plugin-foo-${project.version}-dist
+        ${root}/FooPlugin/target/FooPlugin-${project.version}-dist
       </directory>
       <outputDirectory>plugins/foo/</outputDirectory>
     </fileSet>

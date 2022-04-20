@@ -8,7 +8,7 @@
     <artifactId>java-plugin-quickstart</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>java-plugin-quickstart-plugin-foo</artifactId>
+  <artifactId>FooPlugin</artifactId>
 
   <build>
     <plugins>
