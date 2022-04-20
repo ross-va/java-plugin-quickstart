@@ -11,7 +11,7 @@
 
   <modules>
     <module>java-plugin-quickstart-spi</module>
-    <module>java-plugin-quickstart-core</module>
+    <module>core</module>
 
     <!--  Build plugins -->
     <module>FooPlugin</module>
@@ -29,7 +29,7 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <artifactId>java-plugin-quickstart-core</artifactId>
+        <artifactId>core</artifactId>
         <groupId>org.spyne.javapluginquickstart</groupId>
         <version>${project.version}</version>
       </dependency>

@@ -36,7 +36,7 @@
 
   <dependencies>
     <dependency>
-      <artifactId>java-plugin-quickstart-core</artifactId>
+      <artifactId>core</artifactId>
       <groupId>org.spyne.javapluginquickstart</groupId>
     </dependency>
   </dependencies>
