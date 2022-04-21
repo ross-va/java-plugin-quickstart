@@ -10,7 +10,7 @@ public class FooPlugin implements Plugin {
   @Override
   public List<PluginFactory> getPluginFactories() {
     return Arrays.asList(
-        new PluginFactoryImpl()
+        new FooFactoryImpl()
     );
   }
 }

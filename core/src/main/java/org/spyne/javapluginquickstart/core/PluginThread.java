@@ -5,22 +5,24 @@ import org.spyne.javapluginquickstart.spi.task.Task;
 
 import java.io.File;
 
-public class Threading implements Runnable{
+public class PluginThread<T> implements Runnable{
 
-    private Task plugin;
+    private T thingThatRuns;
 
-    public Threading(Task plugin){
-        this.plugin = plugin;
+    public PluginThread(T instance){
+        this.thingThatRuns = instance;
     }
 
     @Override
     public void run() {
-        System.out.println("Running from inside Threading.run() << %s >> ");
-        plugin.doTask();
-
+        if (thingThatRuns.getClass().getSimpleName().equals("BarImpl")
+                || thingThatRuns.getClass().getSimpleName().equals("FooImpl")) {
+            Task task = (Task) thingThatRuns;
+            task.doTask();
+        }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         String pluginsPath = "plugins";
         if (args.length > 0) {
@@ -39,14 +41,12 @@ public class Threading implements Runnable{
             return;
         }
 
-        System.out.println("This is running from the plugin");
-        final Task foo = f.build();
-        Threading thread1 = new Threading(foo);
-        thread1.run();
+        Thread threadFoo = new Thread(new PluginThread<>(f.build()));
+        Thread.sleep(5000);
+        threadFoo.start();
 
-        System.out.println("Running from bar plugin");
-        final Task bar = b.build();
-        Threading thread2 = new Threading(bar);
-        thread2.run();
+        Thread threadBar = new Thread(new PluginThread<>(b.build()));
+        Thread.sleep(1000);
+        threadBar.start();
     }
 }

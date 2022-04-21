@@ -3,7 +3,7 @@ package org.spyne.javapluginquickstart.fooplugin;
 import org.spyne.javapluginquickstart.spi.task.Task;
 import org.spyne.javapluginquickstart.spi.task.PluginFactory;
 
-public class PluginFactoryImpl implements PluginFactory {
+public class FooFactoryImpl implements PluginFactory {
 
   @Override
   public String name() {
@@ -12,6 +12,6 @@ public class PluginFactoryImpl implements PluginFactory {
 
   @Override
   public Task build() {
-    return new TaskImpl();
+    return new FooImpl();
   }
 }
