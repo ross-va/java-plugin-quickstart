@@ -22,19 +22,15 @@ public class App {
       pluginsPath = args[0];
     }
 
-    PluginLoader pluginLoader = new PluginLoader(new File(pluginsPath));
-    pluginLoader.loadPlugins();
+    PluginFactory f = Util.loadPlugin(pluginsPath, "foo");
+    PluginFactory b = Util.loadPlugin(pluginsPath, "bar");
 
 
     // get plugin based on class/event type
 
 
-    PluginFactory f = pluginLoader.getFooFactory("foo");
-    PluginFactory b = pluginLoader.getFooFactory("bar");
-    System.out.println(b);
-
-    if (f == null) {
-      System.err.println("No factories loaded!");
+    if (f == null || b == null) {
+      System.err.println("Some factories loaded!");
       return;
     }
 
