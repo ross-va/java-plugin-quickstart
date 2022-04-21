@@ -7,16 +7,25 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.spyne.javapluginquickstart.spi.Plugin;
+import org.spyne.javapluginquickstart.spi.task.PluginFactory;
 
 import java.time.Duration;
 import java.util.Collections;
+import java.util.Map;
 import java.util.Properties;
 
-public class ConsumeMessages {
+public class MessageConsumer {
 
-    private static final Logger log = LoggerFactory.getLogger(ConsumeMessages.class.getSimpleName());
+    private static final Logger log = LoggerFactory.getLogger(MessageConsumer.class.getSimpleName());
 
-    public static void main(String[] args) {
+    private Map<String, PluginFactory> pluginMap; // pluginMap --> <"Bar", BarFactoryImpl>
+
+    public MessageConsumer(Map<String, PluginFactory> pluginMap){
+        this.pluginMap = pluginMap;
+    }
+
+    public void pollMessages() {
         log.info("I am a Kakfa Consumer");
 
         String bootstrapServers = "127.0.0.1:9092";
@@ -53,6 +62,13 @@ public class ConsumeMessages {
                     consumer.poll(Duration.ofMillis(1000));
 
             for (ConsumerRecord<String, String> record : records){
+                if (record.key().equalsIgnoreCase("Foo")){
+                    this.pluginMap.get("foo").build().doTask();
+                }
+                if (record.key().equalsIgnoreCase("Bar")) {
+                    this.pluginMap.get("bar").build().doTask();
+                }
+
                 log.info("Key: " + record.key() + ", Value: " + record.value());
                 log.info("Partition: " + record.partition() + ", Offset: " + record.offset());
             }

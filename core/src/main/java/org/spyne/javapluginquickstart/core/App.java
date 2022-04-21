@@ -1,9 +1,9 @@
 package org.spyne.javapluginquickstart.core;
 
-import java.io.File;
-
 import org.spyne.javapluginquickstart.spi.task.Task;
 import org.spyne.javapluginquickstart.spi.task.PluginFactory;
+
+import java.util.HashMap;
 
 /**
  * Launcher for javapluginquickstart
@@ -22,10 +22,15 @@ public class App {
       pluginsPath = args[0];
     }
 
-    PluginFactory f = Util.loadPlugin(pluginsPath, "foo");
-    PluginFactory b = Util.loadPlugin(pluginsPath, "bar");
+    PluginFactory f = Util.getThePluginFactory(pluginsPath, "foo");
+    PluginFactory b = Util.getThePluginFactory(pluginsPath, "bar");
 
+    HashMap<String, PluginFactory> pluginFactoryHashMap = new HashMap<>();
+    pluginFactoryHashMap.put("foo", f);
+    pluginFactoryHashMap.put("bar", b);
 
+    MessageConsumer messageConsumer = new MessageConsumer(pluginFactoryHashMap);
+    messageConsumer.pollMessages();
     // get plugin based on class/event type
 
 

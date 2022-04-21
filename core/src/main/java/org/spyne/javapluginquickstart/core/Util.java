@@ -6,9 +6,11 @@ import java.io.File;
 
 public class Util {
 
-    public static PluginFactory loadPlugin(String pluginsPath, String pluginName){
+    public static PluginFactory getThePluginFactory(String pluginsPath, String pluginName){
         PluginLoader pluginLoader = new PluginLoader(new File(pluginsPath));
         pluginLoader.loadPlugins();
         return pluginLoader.getFooFactory(pluginName);
     }
+
+
 }
